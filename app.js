@@ -9,7 +9,7 @@ const password = process.env.PASSWORD;*/
 
 const axios = require('axios');
 
-const compute = fork('task.js');
+//const compute = fork('task.js');
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
