@@ -24,7 +24,7 @@ app.post('/', (req, res) => {
     console.log("got post");
     console.log(req.body);
     if(req.body.event == "message")
-    sendMessage();  
+    sendMessage(req.body.sender.id);  
     res.send('This is the tunnel created by Ngrok with Http');
 });
 
@@ -34,13 +34,13 @@ app.post('/', (req, res) => {
 const server = app.listen(process.env.PORT, () => {
     console.log('Express listening at ', server.address().port);
 })
-function sendMessage(){
+function sendMessage(id){
     axios.post("https://chatapi.viber.com/pa/send_message",{
-        receiver:"pLjDe1D1SRZ7irabsxeIoQ==",
+        receiver:id,
         text:"Hello",
         type:"text",
         sender:{
-            name:"reply"
+            name:"Node Server"
         }
     },
     {
